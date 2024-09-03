@@ -1,0 +1,16 @@
+name: "hayashi-servicemesh-sidecar-route"
+hostnames:
+- "sidecar.physhp.dev"
+meshes:
+- "projects/nodeai/locations/global/meshes/sidecar-mesh"
+rules:
+- matches:
+  - prefixMatch: "/micro"
+  action:
+    destinations:
+    - serviceName: "projects/nodeai/locations/global/backendServices/service-backend-for-frontend-asia-northeast1"
+- matches:
+  - prefixMatch: "/authors"
+  action:
+    destinations:
+    - serviceName: "projects/nodeai/locations/global/backendServices/serivce-backend-a-asia-northeast1"

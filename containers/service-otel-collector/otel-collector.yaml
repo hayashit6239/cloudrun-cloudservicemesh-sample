@@ -1,0 +1,30 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+processors:
+  batch: {}
+  resourcedetection:
+    detectors: [env, gcp]
+    timeout: 40s
+    override: false
+
+exporters:
+  debug:
+    verbosity: detailed
+  googlecloud:
+    project: ${project_id}
+  otlphttp:
+    endpoint: "http://service-openobserve.default.svc.cluster.local:5080/api/default"
+    # Basic 認証用の情報: https://openobserve.ai/docs/ingestion/traces/
+    headers:
+      Authorization: Basic cm9vdEBleGFtcGxlLmNvbTpDb21wbGV4cGFzcyMxMjMK
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch, resourcedetection]
+      exporters: [googlecloud]
+      # exporters: [otlphttp]

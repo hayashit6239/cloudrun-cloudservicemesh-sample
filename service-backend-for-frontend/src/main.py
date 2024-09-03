@@ -1,0 +1,27 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+import os
+import logging
+
+from .routers import router
+
+from .instrumentation import instrument
+
+app = FastAPI()
+app.include_router(router)
+
+logger = logging.getLogger()
+
+logger.info(f"Environtment Value: SERVICE_BACKEND_A_URL: {os.getenv("SERVICE_BACKEND_A_URL")}")
+
+if os.getenv("SERVICE_BACKEND_A_URL") is None:
+    logger.warning("Environtment Value: SERVICE_BACKEND_A_URL is null")
+
+logger.info(f"Environtment Value: OTEL_EXPORTER_OTLP_ENDPOINT: {os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT")}")
+
+if os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT") is None:
+    logger.warning("Environtment Value: OTEL_EXPORTER_OTLP_ENDPOINT is null")
+elif os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT") == "":
+    logger.info("Environtment Value: OTEL_EXPORTER_OTLP_ENDPOINT is no string")
+else:
+    instrument(app)
