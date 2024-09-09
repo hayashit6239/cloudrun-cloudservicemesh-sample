@@ -1,0 +1,3 @@
+SERVICE_BACKEND_A_URL: "http://service-backend-a.cms.dev"
+SERVICE_BACKEND_B_URL: "http://service-backend-b.cms.dev"
+OTEL_EXPORTER_OTLP_ENDPOINT: ""

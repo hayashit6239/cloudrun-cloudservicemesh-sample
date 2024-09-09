@@ -11,7 +11,7 @@ resource "google_cloud_run_v2_service" "backend" {
       }
       env {
         name = "SERVICE_BACKEND_B_URL"
-        value = ""
+        value = "http://service-${var.backend_name}.${domain_name}"
       }
       env {
         name = "OTEL_EXPORTER_OTLP_ENDPOINT"

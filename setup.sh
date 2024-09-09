@@ -38,3 +38,13 @@ log INFO "Docker イメージタグ名: $arifact_registry_name/cloudrun/backend-
 docker push $arifact_registry_name/cloudrun/backend-b
 
 log INFO "Docker イメージタグ名: $arifact_registry_name/cloudrun/backend-b のプッシュが成功しました"
+
+log INFO "クライアント用のコンテナをビルド&プッシュを行います"
+
+docker build -f ./containers/service-backend-for-frontend/Dockerfile -t $arifact_registry_name/cloudrun/backend-for-frontend .
+
+log INFO "Docker イメージタグ名: $arifact_registry_name/cloudrun/backend-for-frontend のビルドが成功しました"
+
+docker push $arifact_registry_name/cloudrun/backend-for-frontend
+
+log INFO "Docker イメージタグ名: $arifact_registry_name/cloudrun/backend-for-frontend のプッシュが成功しました"
