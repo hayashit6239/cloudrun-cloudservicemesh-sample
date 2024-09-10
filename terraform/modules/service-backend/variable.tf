@@ -39,6 +39,6 @@ variable mesh_id {
 }
 
 variable domain_name {
-    type        = string
-    description = "Cloud DNS で設定したドメインメイン Ex. xxx.yy"
+  type        = string
+  description = "Cloud DNS で設定したドメインメイン Ex. xxx.yy"
 }

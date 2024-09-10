@@ -13,24 +13,9 @@ variable artifact_registry_path {
   description = "Cloud Run にのせるコンテナイメージのパス Ex. asia-northeast1-docker.pkg.dev/{project_id}/xxx"
 }
 
-variable vpc {
-  type        = string
-  description = "Direct VPC Access 用の VPC"
-}
-
-variable subnet {
-  type        = string
-  description = "Direct VPC Access 用の Subnet"
-}
-
 variable service_account {
   type        = string
   description = "Cloud Run サービスのサービスアカウント"
-}
-
-variable client_name {
-  type        = string
-  description = "Cloud Run サービスのクライアントの名前"
 }
 
 variable domain_name {
