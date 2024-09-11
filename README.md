@@ -1,5 +1,5 @@
 # 概要
-[Cloud Service Mesh + Cloud Run でサービスメッシュ構築]()という記事のサンプルリポジトリです。
+[Cloud Service Mesh + Cloud Run でサービスメッシュ構築](https://zenn.dev/t_hayashi/articles/e6d51f3a4c95f3)という記事のサンプルリポジトリです。
 
 # 利用手順
 上記を参照ください。
